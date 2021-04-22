@@ -1,35 +1,24 @@
 import React from 'react'
 import './styles/main.scss'
-// import axios from 'axios'
-import { getArt } from '../src/components/lib/api.js'
+
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import Nav from './components/Nav'
+import Home from './components/Home'
+import SingleArtworkPage from './components/SingleArtwork'
+
 
 function App() {
 
-  const [art, setArt] = React.useState(null)
-
-
-  React.useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await getArt()
-        setArt(data)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getData()
-  }, [])
-
-  console.log(art)
-
-
-
   return (
-    <div className="App">
-      {art ? <div>{art.objectID}</div> : <div>Art</div>}
-
-    </div>
-  );
+    <BrowserRouter>
+      <Nav />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/artwork" component={SingleArtworkPage} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default App;
