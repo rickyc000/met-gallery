@@ -10,7 +10,7 @@ function SingleArtworkPage() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await getSingleArtwork(790)
+        const { data } = await getSingleArtwork(901)
         setArtwork(data)
       } catch (err) {
         console.log(err)
@@ -28,22 +28,29 @@ function SingleArtworkPage() {
       {artwork ?
         <div>
           <div>
-            <img
-            src={artwork.primaryImage}
-            alt={artwork.title}
-            className="artwork-image"
-            />
+            <div className="single-artwork-image-wrapper">
+              <img
+                src={artwork.primaryImage}
+                alt={artwork.title}
+                className="single-artwork-image"
+              />
+            </div>
+
+
           </div>
           <div>
             {artwork.title} ({artwork.objectDate})
-          </div>
+            </div>
           <div>
-            Artist: {artwork.artistDisplayName ? <p>{artwork.artistDisplayName}</p> : <p>Unknown</p> }
+            {artwork.artistDisplayName ? <p>{artwork.artistDisplayName}</p> : <p>Unknown Artist</p>}
           </div>
           <div>
             Dimensions: {artwork.dimensions}
           </div>
-          
+          <div>
+            {artwork.creditLine}
+          </div>
+
         </div> : <div>Loading</div>}
     </main>
   )
