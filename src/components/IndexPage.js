@@ -5,7 +5,7 @@ import { getDepartment, getSingleArtwork } from '../lib/api'
 function IndexPage() {
 
   const [artworks, setArtworks] = React.useState(null)
-  const [art, setArt] = React.useState(null)
+  const [art, setArt] = React.useState([])
 
   React.useEffect(() => {
     const getData = async () => {
@@ -19,7 +19,11 @@ function IndexPage() {
     getData()
   }, [])
 
+  // const updateArtworkList = (artworkToAdd) => {
+  //   // const updatedArtworkList = art.push(artworkToAdd)
 
+  //   setArt([...art, artworkToAdd])
+  // }
   
 
   React.useEffect(() => {
@@ -39,7 +43,7 @@ function IndexPage() {
 
           //* Run this until an ID is added to the artworkIDs array:
           while (!iDAdded) {
-            const ID = Math.floor(Math.random() * range) + 1
+            const ID = artworks.objectIDs[Math.floor(Math.random() * range) + 1]
 
             //* If the artworkID is not already in the array, push the ID to the array:
             if (!artworkIDs.includes(ID)) {
@@ -52,22 +56,29 @@ function IndexPage() {
           }
         }
       }
-      console.log(artworkIDs)
+      return artworkIDs
     }
 
-    const getData = async () => {
+    const getArtworksData = async () => {
       if (artworks) {
-        generateIDs(8, artworks.objectIDs.length)
-        console.log(artworks.objectIDs.length)
-        try {
-          const { data } = await getSingleArtwork(artworks.objectIDs[2])
-          setArt(data)
-        } catch (err) {
-          console.log(err)
+
+        //* Creates a list of 8 x objectIDs to GET request:
+        const artworkIDsToFetch = generateIDs(8, artworks.objectIDs.length)
+
+        const artworkObjects = []
+
+        for (let i = 0; i < 8; i++) {
+          try {
+            const { data } = await getSingleArtwork(artworkIDsToFetch[i])
+            artworkObjects.push(data)
+          } catch (err) {
+            console.log(err)
+          }
         }
+        setArt(artworkObjects)
       }
     }
-    getData()
+    getArtworksData()
   }, [artworks])
 
   console.log(art)
