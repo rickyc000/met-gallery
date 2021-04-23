@@ -7,6 +7,10 @@ export function getSingleArtwork(id) {
 }
 
 
+// export function getDepartment(id) {
+//   return axios.get(`${baseURL}/public/collection/v1/objects?departmentIds=${id}`)
+// }
+
 export function getDepartment(id) {
-  return axios.get(`${baseURL}/public/collection/v1/objects?departmentIds=${id}?hasImages=true`)
+  return axios.get(`${baseURL}/public/collection/v1/search?hasImages=true&q=Auguste Renoir`)
 }

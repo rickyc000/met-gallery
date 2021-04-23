@@ -1,17 +1,19 @@
 import React from 'react'
 import { getDepartment, getSingleArtwork } from '../lib/api'
-// import { getDepartment } from '../lib/api'
+import ArtworkCard from './ArtworkCard.js'
 
 function IndexPage() {
 
-  const [artworks, setArtworks] = React.useState(null)
-  const [art, setArt] = React.useState([])
+  //* Contains IDs only:
+  const [artworkIDList, setArtworkIDList] = React.useState(null)
+  //* Contains artwork info + images:
+  const [artToDisplay, setArtToDisplay] = React.useState([])
 
   React.useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await getDepartment(9)
-        setArtworks(data)
+        setArtworkIDList(data)
       } catch (err) {
         console.log(err)
       }
@@ -19,12 +21,6 @@ function IndexPage() {
     getData()
   }, [])
 
-  // const updateArtworkList = (artworkToAdd) => {
-  //   // const updatedArtworkList = art.push(artworkToAdd)
-
-  //   setArt([...art, artworkToAdd])
-  // }
-  
 
   React.useEffect(() => {
 
@@ -43,7 +39,7 @@ function IndexPage() {
 
           //* Run this until an ID is added to the artworkIDs array:
           while (!iDAdded) {
-            const ID = artworks.objectIDs[Math.floor(Math.random() * range) + 1]
+            const ID = artworkIDList.objectIDs[Math.floor(Math.random() * range) + 1]
 
             //* If the artworkID is not already in the array, push the ID to the array:
             if (!artworkIDs.includes(ID)) {
@@ -60,34 +56,48 @@ function IndexPage() {
     }
 
     const getArtworksData = async () => {
-      if (artworks) {
+      if (artworkIDList) {
 
         //* Creates a list of 8 x objectIDs to GET request:
-        const artworkIDsToFetch = generateIDs(8, artworks.objectIDs.length)
+        const artworkIDsToFetch = generateIDs(8, artworkIDList.objectIDs.length)
 
-        const artworkObjects = []
+        const artworkData = []
 
+        //* Loops through selected objectIDs before setting to state (art)
         for (let i = 0; i < 8; i++) {
           try {
             const { data } = await getSingleArtwork(artworkIDsToFetch[i])
-            artworkObjects.push(data)
+            artworkData.push(data)
           } catch (err) {
             console.log(err)
           }
         }
-        setArt(artworkObjects)
+        setArtToDisplay(artworkData)
       }
     }
     getArtworksData()
-  }, [artworks])
+  }, [artworkIDList])
 
-  console.log(art)
+  console.log(artToDisplay)
 
 
   return (
     <main>
       <div>
-        Index
+        {
+          artToDisplay ?
+            <div>{
+                artToDisplay.map(artwork => (
+                  <ArtworkCard artwork={artwork} />
+                ))
+            }
+            </div>
+            :
+            <div>Loading</div>
+
+
+
+        }
 
       </div>
 
