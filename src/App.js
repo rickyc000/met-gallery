@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import Home from './components/Home'
 import SingleArtworkPage from './components/SingleArtwork'
+import IndexPage from './components/IndexPage'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/artwork" component={SingleArtworkPage} />
+        <Route path="/index" component={IndexPage} />
       </Switch>
     </BrowserRouter>
   )

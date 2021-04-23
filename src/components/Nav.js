@@ -5,17 +5,23 @@ function Nav() {
   return (
     <header>
       <div className="nav-section-left">
-        <div className="nav-item">
-          <Link to="/">Met Gallery</Link>
-        </div>
+        <Link to="/">
+          <div className="nav-item">
+            Met Gallery
+          </div>
+        </Link>
       </div>
       <div className="nav-section-right">
-        <div className="nav-item">
-          <Link to="/artwork">Show</Link>
-        </div>
-        <div className="nav-item">
-          <Link to="/about">About</Link>
-        </div>
+        <Link to="/artwork">
+          <div className="nav-item">
+            Show
+          </div>
+        </Link>
+        <Link to="/about">
+          <div className="nav-item about-link">
+            About
+          </div>
+        </Link>
       </div>
 
     </header>

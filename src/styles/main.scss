@@ -1,4 +1,4 @@
-$base-color: #c6538c;
+$red: #e4002b;
 
 html, body {
   margin: 0;
@@ -17,14 +17,12 @@ header {
   // box-shadow: 2px 1px 5px 1px #ccc;
 }
 
-// main {
-//   margin-top: 30px;
-// }
-
 a {
   text-decoration: none;
-  color: black;
 }
+
+
+
 
 .single-artwork-image-wrapper {
   border-bottom: 1px solid black;
@@ -60,14 +58,23 @@ a {
 .nav-item {
   padding: 12px 17px;
   transition: 0.2s;
+  color: black;
+  text-decoration: none;
 }
+
+
 
 .nav-item:hover {
   background-color: rgb(221, 221, 221);
+  background-color: $red;
   cursor: pointer;
   // padding: 25px;
-  transition: 0.2s;
+  transition: 0.3s;
+  color: white;
+  // opacity: 80%;
 }
+
+
 
 .nav-section-right,
 .nav-section-left {
@@ -82,7 +89,13 @@ a {
   border-left: 1px solid black;
 }
 
-.nav-item:nth-child(2) {
+.about-link {
   border-left: 1px solid black;
 }
+
+
+
+// .nav-item:last-of-type {
+//   border-left: 1px solid black;
+// }
 
