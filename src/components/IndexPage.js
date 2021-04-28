@@ -4,6 +4,8 @@ import ArtworkCard from './ArtworkCard.js'
 
 function IndexPage() {
 
+  const quantityToGet = 30
+
   //* Contains IDs only:
   const [artworkIDList, setArtworkIDList] = React.useState(null)
   //* Contains artwork info + images:
@@ -59,12 +61,12 @@ function IndexPage() {
       if (artworkIDList) {
 
         //* Creates a list of 8 x objectIDs to GET request:
-        const artworkIDsToFetch = generateIDs(8, artworkIDList.objectIDs.length)
+        const artworkIDsToFetch = generateIDs(quantityToGet, artworkIDList.objectIDs.length)
 
         const artworkData = []
 
         //* Loops through selected objectIDs before setting to state (art)
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < quantityToGet; i++) {
           try {
             const { data } = await getSingleArtwork(artworkIDsToFetch[i])
             artworkData.push(data)
@@ -86,9 +88,11 @@ function IndexPage() {
       <div>
         {
           artToDisplay ?
-            <div>{
-                artToDisplay.map(artwork => (
-                  <ArtworkCard artwork={artwork} />
+            <div
+              className='artwork-wrapper'
+              key='Artwork Wrapper'>
+                {artToDisplay.map((artwork, index) => (
+                  <ArtworkCard artwork={artwork} itemNumber={index} />
                 ))
             }
             </div>

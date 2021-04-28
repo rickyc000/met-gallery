@@ -1,14 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function ArtworkCard({ artwork }) {
+function ArtworkCard({ artwork, itemNumber }) {
 
   return (
-    <div>
-      <Link to="/show">
-        Artwork
-        <div key={artwork.objectID}>{artwork.objectName}</div>
-        <img src={artwork.primaryImage} alt={artwork.objectName} width="200px"/>
+    <div key={artwork.objectID} className={`image-wrapper box${itemNumber} `}>
+      <Link to={`/show/${artwork.objectID}`}>
+        <img
+          className='index-image'
+          src={artwork.primaryImage}
+          alt={artwork.objectName}
+        // width='200px'
+        />
       </Link>
     </div>
   )

@@ -11,7 +11,7 @@ function SingleArtworkPage() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await getSingleArtwork(454)
+        const { data } = await getSingleArtwork(4220)
         setArtwork(data)
       } catch (err) {
         console.log(err)
