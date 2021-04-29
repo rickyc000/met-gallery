@@ -12,5 +12,5 @@ export function getSingleArtwork(id) {
 // }
 
 export function getDepartment(id) {
-  return axios.get(`${baseURL}/public/collection/v1/search?hasImages=true&q=islamic`)
+  return axios.get(`${baseURL}/public/collection/v1/search?hasImages=true&q=painting`)
 }

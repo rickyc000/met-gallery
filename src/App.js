@@ -4,7 +4,7 @@ import './styles/main.scss'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Nav from './components/Nav'
-import Home from './components/Home'
+import Home from './components/Home/HomePage'
 import SingleArtworkPage from './components/SingleArtwork'
 import IndexPage from './components/IndexPage'
 

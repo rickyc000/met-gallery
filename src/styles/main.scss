@@ -11,8 +11,9 @@ header {
   font-size: 20px;
   display: flex;
   justify-content: space-between;
-  // position: fixed;
-  
+  position: fixed;
+  width: 100%;
+  background-color: white;
   // height: 30px;
   // box-shadow: 2px 1px 5px 1px #ccc;
 }
@@ -60,6 +61,7 @@ a {
   transition: 0.2s;
   color: black;
   text-decoration: none;
+  font-size: 17px;
 }
 
 
@@ -81,9 +83,9 @@ a {
   display: flex;
 }
 
-.nav-section-left {
-  border-right: 1px solid black;
-}
+// .nav-section-left {
+//   border-right: 1px solid black;
+// }
 
 .nav-section-right {
   border-left: 1px solid black;
@@ -163,9 +165,95 @@ a {
   width: 100%;
 }
 
-// a {
-//   margin: 0;
-//   padding: 0;
-//   height: 0;
-//   width: 0;
-// }
+.banner {
+  width: 100%;
+  display: flex;
+}
+
+.split-panel {
+  // border: 1px solid orange;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.split-panel.left,
+.split-panel.right {
+  flex-direction: column;
+  padding: 3.5vw;
+}
+
+.welcome-banner {
+  background-color: rgb(233, 233, 233);
+  height: 90vh;
+}
+
+.welcome-title {
+  justify-self: flex-start;
+  width: 100%;
+  font-size: 65px;
+  font-weight: 400;
+  margin: 15px;
+}
+
+.section-divider {
+  // border: 1px solid black;
+  width: 100%;
+}
+
+.scroll-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chevron {
+  margin: 35px;
+}
+
+.welcome-text {
+  font-size: 30px;
+  line-height: 1.6;
+}
+
+.welcome-image {
+  padding: 28px;
+  width: 550px;
+  height: auto;
+}
+
+.welcome-panel {
+  width: 650px;
+  // max-width: 400px;
+}
+
+
+.department-image {
+  width: 500px;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background-color: rgb(109, 190, 218);
+  color: white;
+  font-size: 16px;
+  padding: 14px 40px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+button:hover {
+  background-color: rgb(137, 202, 224);
+  transition: 0.1s;
+}
+
+.dept-panel {
+  align-items: flex-start;
+}
+
+h2 {
+  font-size: 37px;
+  font-weight: normal;
+}
